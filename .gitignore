@@ -1,0 +1,61 @@
+# --- Node / Vite (frontend) ---
+node_modules/
+dist/
+.vite/
+coverage/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# Environment files (keep an example)
+.env
+.env.*
+!.env.example
+
+# Common framework/tool caches (harmless if not present)
+.cache/
+.parcel-cache/
+.storybook-out/
+storybook-static/
+.next/
+.nuxt/
+.svelte-kit/
+out/
+
+# --- Keycloak theme (adconnect) ---
+# We commit our source (FTL, overrides.css, tailwind config, etc.)
+# but ignore compiled CSS artifacts produced by Tailwind/PostCSS.
+keycloak-theme/adconnect/resources/css/daisy.min.css
+keycloak-theme/adconnect/resources/css/*.map
+
+# Tool caches in the theme workspace
+keycloak-theme/adconnect/.eslintcache
+keycloak-theme/adconnect/.postcss-cache/
+keycloak-theme/adconnect/.sass-cache/
+keycloak-theme/adconnect/.tmp/
+
+# Optional: if you sometimes dump exports here, keep JSON tracked by default
+# keycloak-theme/adconnect/data/
+# keycloak-theme/adconnect/logs/
+
+# --- Docker / local runtime clutter ---
+docker-compose.override.yml
+**/tmp/
+**/logs/**
+**/volumes/**
+**/.docker/
+
+# --- OS / IDE cruft ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# --- Editors / misc ---
+*.swp
+*.swo
+*.pid
+
