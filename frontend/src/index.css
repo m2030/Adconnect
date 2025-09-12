@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* optional: subtle background */
+body { @apply bg-base-100 text-base-content; }

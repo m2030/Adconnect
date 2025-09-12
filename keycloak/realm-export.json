@@ -1,0 +1,65 @@
+{
+  "realm": "demo",
+  "enabled": true,
+  "internationalizationEnabled": true,
+  "supportedLocales": ["en", "ar"],
+  "defaultLocale": "en",
+  "clients": [
+    {
+      "clientId": "demo-spa",
+      "name": "Demo SPA",
+      "rootUrl": "http://localhost:5173",
+      "baseUrl": "/",
+      "redirectUris": [
+        "http://localhost:5173/*",
+        "http://127.0.0.1:5173/*"
+      ],
+      "webOrigins": ["+"],
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:5173/*"
+      }
+    }
+  ],
+  "roles": { "realm": [ { "name": "sponsor" }, { "name": "advertiser" } ] },
+  "users": [
+{
+  "username": "alice",
+  "enabled": true,
+  "emailVerified": true,
+  "email": "alice@example.com",
+  "firstName": "Alice",
+  "lastName": "Sponsor",
+  "realmRoles": ["sponsor"],
+  "requiredActions": [],
+  "credentials": [
+    { "type": "password", "value": "Passw0rd123!", "temporary": false }
+  ],
+  "attributes": {
+    "company": ["Example Inc"]
+  }
+}
+,
+  {
+  "username": "bob",
+  "enabled": true,
+  "emailVerified": true,
+  "email": "bob@example.com",
+  "firstName": "Bob",
+  "lastName": "Advertiser",
+  "realmRoles": ["advertiser"],
+  "requiredActions": [],
+  "credentials": [
+    { "type": "password", "value": "Passw0rd123!", "temporary": false }
+  ],
+  "attributes": {
+    "company": ["Example Inc"]
+  }
+}
+  ]
+}

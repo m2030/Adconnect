@@ -1,0 +1,53 @@
+/* === AdConnect dark palette for DaisyUI === */
+html[data-theme="adconnect"] {
+  --b1: #0f1e34;  /* card */
+  --b2: #0b1220;  /* page background */
+  --b3: #0f1e34;
+  --bc: #e5e7eb;  /* base text */
+
+  --p:  #628df7;  /* primary bg */
+  --pc: #ffffff;  /* primary text */
+
+  --n:  #111827;
+  --nc: #e5e7eb;
+
+  --in: #38bdf8; --su: #22c55e; --wa: #f59e0b; --er: #ef4444;
+
+  --rounded-box: 1rem; --rounded-btn: .75rem; --rounded-badge: .5rem;
+
+  color-scheme: dark;
+  background-color: var(--b2); /* fallback */
+}
+
+/* Ensure the main surfaces render dark (and win the cascade) */
+html[data-theme="adconnect"] body,
+html[data-theme="adconnect"] .bg-base-200 { background-color: var(--b2) !important; color: var(--bc); }
+
+html[data-theme="adconnect"] .bg-base-100,
+html[data-theme="adconnect"] .card {
+  background-color: var(--b1) !important;
+  border-color: #1f2a44 !important;
+  color: var(--bc);
+  box-shadow: 0 30px 60px rgba(2,6,23,.5) !important;
+}
+
+/* Inputs & buttons */
+html[data-theme="adconnect"] .input {
+  background-color: var(--b1) !important;
+  border-color: #334155 !important;
+  color: var(--bc) !important;
+}
+html[data-theme="adconnect"] .input::placeholder { color: #94a3b8 !important; }
+
+html[data-theme="adconnect"] .btn-primary {
+  background-color: var(--p) !important;
+  border-color: var(--p) !important;
+  color: var(--pc) !important;
+}
+html[data-theme="adconnect"] .btn-primary:hover { filter: brightness(.95); }
+
+html[data-theme="adconnect"] a,
+html[data-theme="adconnect"] .link,
+html[data-theme="adconnect"] .link-primary { color: #82aaff !important; }
+
+html[data-theme="adconnect"] .divider { background: #243044 !important; }

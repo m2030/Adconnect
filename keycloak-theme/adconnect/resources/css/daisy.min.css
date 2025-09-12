@@ -1,0 +1,84 @@
+/* --- AdConnect color overrides (no Tailwind rebuild needed) --- */
+:root{
+  --ad-bg: #0b1220;            /* page background (dark navy) */
+  --ad-card: #111827;          /* card background */
+  --ad-border: #1f2937;        /* borders/dividers */
+  --ad-text: #e5e7eb;          /* main text */
+  --ad-subtle: #9ca3af;        /* labels/secondary text */
+  --ad-primary: #5b84ff;       /* primary brand blue */
+  --ad-primary-contrast: #ffffff;
+}
+
+/* Page + card */
+html, body{ background: var(--ad-bg); color: var(--ad-text); }
+.bg-base-200{ background-color: var(--ad-bg) !important; }
+.bg-base-100, .card{ background-color: var(--ad-card) !important; border-color: var(--ad-border) !important; }
+.divider{ background: var(--ad-border) !important; }
+
+/* Inputs + labels */
+.input{ background-color: #0b1324; color: var(--ad-text); border-color: var(--ad-border); }
+.label .label-text{ color: var(--ad-subtle); }
+
+/* Primary actions + links */
+.btn-primary{
+  background-color: var(--ad-primary) !important;
+  border-color: var(--ad-primary) !important;
+  color: var(--ad-primary-contrast) !important;
+}
+.link, .btn-link, a{ color: var(--ad-primary); }
+/* --- AdConnect color overrides (no Tailwind rebuild needed) --- */
+:root{
+  --ad-bg: #0b1220;            /* page background (dark navy) */
+  --ad-card: #111827;          /* card background */
+  --ad-border: #1f2937;        /* borders/dividers */
+  --ad-text: #e5e7eb;          /* main text */
+  --ad-subtle: #9ca3af;        /* labels/secondary text */
+  --ad-primary: #5b84ff;       /* primary brand blue */
+  --ad-primary-contrast: #ffffff;
+}
+
+/* Page + card */
+html, body{ background: var(--ad-bg); color: var(--ad-text); }
+.bg-base-200{ background-color: var(--ad-bg) !important; }
+.bg-base-100, .card{ background-color: var(--ad-card) !important; border-color: var(--ad-border) !important; }
+.divider{ background: var(--ad-border) !important; }
+
+/* Inputs + labels */
+.input{ background-color: #0b1324; color: var(--ad-text); border-color: var(--ad-border); }
+.label .label-text{ color: var(--ad-subtle); }
+
+/* Primary actions + links */
+.btn-primary{
+  background-color: var(--ad-primary) !important;
+  border-color: var(--ad-primary) !important;
+  color: var(--ad-primary-contrast) !important;
+}
+.link, .btn-link, a{ color: var(--ad-primary); }
+/* --- AdConnect color overrides (no Tailwind rebuild needed) --- */
+:root{
+  --ad-bg: #0b1220;            /* page background (dark navy) */
+  --ad-card: #111827;          /* card background */
+  --ad-border: #1f2937;        /* borders/dividers */
+  --ad-text: #e5e7eb;          /* main text */
+  --ad-subtle: #9ca3af;        /* labels/secondary text */
+  --ad-primary: #5b84ff;       /* primary brand blue */
+  --ad-primary-contrast: #ffffff;
+}
+
+/* Page + card */
+html, body{ background: var(--ad-bg); color: var(--ad-text); }
+.bg-base-200{ background-color: var(--ad-bg) !important; }
+.bg-base-100, .card{ background-color: var(--ad-card) !important; border-color: var(--ad-border) !important; }
+.divider{ background: var(--ad-border) !important; }
+
+/* Inputs + labels */
+.input{ background-color: #0b1324; color: var(--ad-text); border-color: var(--ad-border); }
+.label .label-text{ color: var(--ad-subtle); }
+
+/* Primary actions + links */
+.btn-primary{
+  background-color: var(--ad-primary) !important;
+  border-color: var(--ad-primary) !important;
+  color: var(--ad-primary-contrast) !important;
+}
+.link, .btn-link, a{ color: var(--ad-primary); }
