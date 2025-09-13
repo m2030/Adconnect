@@ -10,7 +10,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    environmentOptions: { jsdom: { url: "http://localhost/" } },
     setupFiles: ['./src/test/setup.ts'],
+    include: ["src/**/*.spec.ts", "src/**/*.spec.tsx"],
     coverage: { reporter: ['text', 'html'] },
    server: {
       deps: { inline: ["whatwg-url"] }  // <- new place in Vitest 3

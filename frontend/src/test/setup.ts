@@ -1,15 +1,16 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+import { vi } from "vitest";
 
-// (optional) mock keycloak-js so unit tests don’t hit a real server
-import { vi } from 'vitest';
-vi.mock('keycloak-js', () => {
-  class KC {
-    authenticated = false;
-    tokenParsed: any = null;
-    login = vi.fn(async () => undefined);
-    logout = vi.fn(async () => undefined);
-    init = vi.fn(async () => false);
-  }
-  return { default: KC };
-});
+// mock keycloak-js so imports don’t explode in tests
+vi.mock("keycloak-js", () => ({
+  default: vi.fn().mockImplementation(() => ({
+    init: vi.fn().mockResolvedValue(true),
+    login: vi.fn(),
+    logout: vi.fn(),
+    authenticated: false,
+    tokenParsed: {}
+  }))
+}));
 
+// silence React Router future flags (optional)
+(globalThis as any).__reactRouterVersionWarning = true;
