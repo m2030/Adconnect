@@ -1,4 +1,5 @@
-#
+# Adconnect
+# AdConnect Authentication (Keycloak + Custom Theme)
 
 This repository contains the setup for **Keycloak** with a **custom DaisyUI/Tailwind theme** and a **Vite/React frontend**.  
 It provides a corporate-style login experience with support for **multiple locales (English + Arabic)**.
