@@ -149,27 +149,64 @@ if (typeof window !== "undefined") {
 }
 
 export default i18n;*/
+// src/i18n.ts
+// src/i18n.ts
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import Backend from "i18next-http-backend";                 // or remove if using inline resources
-import LanguageDetector from "i18next-browser-languagedetector";
 
-i18n
-  .use(Backend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    supportedLngs: ["en", "ar"],
-    nonExplicitSupportedLngs: true,         // en-US -> en
-    load: "languageOnly",                    // only 'en' or 'ar'
-    ns: ["common", "translation"],           // <-- load both
-    defaultNS: "translation",                // use 'translation' by default
-    fallbackNS: "common",                    // if key missing in 'translation'
-    backend: { loadPath: "/locales/{{lng}}/{{ns}}.json" },
-    interpolation: { escapeValue: false },
-    debug: true
-  });
+// import JSON bundles
+import enCommon from "./locales/en/common.json";
+import enTranslation from "./locales/en/translation.json";
+import enRegistration from "./locales/en/registration.json";
+import arCommon from "./locales/ar/common.json";
+import arTranslation from "./locales/ar/translation.json";
+import arRegistration from "./locales/ar/registration.json";
 
-// and ensure your entry imports it first:
-import "./i18n";
+// map browser language to base ('en', 'ar')
+const detectBase = () => {
+  try {
+    const saved = (localStorage.getItem("i18nextLng") || navigator.language || "en").toLowerCase();
+    return saved.startsWith("ar") ? "ar" : "en";
+  } catch {
+    return "en";
+  }
+};
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { common: enCommon, translation: enTranslation, registration: enRegistration },
+    ar: { common: arCommon, translation: arTranslation, registration: arRegistration }
+  },
+  lng: detectBase(),
+  fallbackLng: "en",
+  supportedLngs: ["en", "ar"],
+  ns: ["common", "translation", "registration"],
+  defaultNS: "translation",
+  fallbackNS: ["common"],
+  interpolation: { escapeValue: false },
+  react: { useSuspense: false }, // avoid Suspense during namespace loads
+  debug: import.meta.env.DEV
+});
+
+// expose for DevTools + keep <html> dir/lang in sync
+if (typeof window !== "undefined") {
+  // @ts-expect-error debug-only
+  window.__i18n = i18n;
+
+  // --- RTL/LTR handling ---
+  const applyDir = (lng?: string) => {
+    const base = (lng ?? "en").toLowerCase().split("-")[0];
+    const isRTL = base === "ar";
+    document.documentElement.setAttribute("lang", base);
+    document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+  };
+
+  // set once on load
+  applyDir(i18n.resolvedLanguage || i18n.language);
+
+  // keep it in sync on language change
+  i18n.on("languageChanged", (lng) => applyDir(lng));
+}
+
+export default i18n;
+

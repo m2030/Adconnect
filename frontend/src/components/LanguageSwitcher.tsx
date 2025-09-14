@@ -1,18 +1,41 @@
-// frontend/src/components/LanguageSwitcher.tsx
+// src/components/LanguageSwitcher.tsx
+import { useState, startTransition } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
-  const current = i18n.language?.toLowerCase().startsWith("ar") ? "ar" : "en";
+  const { i18n, t } = useTranslation(["common"]); // optional
+  const [open, setOpen] = useState(false);
+
+  const pick = (lng: "en" | "ar") => {
+    startTransition(() => i18n.changeLanguage(lng));
+    setOpen(false);                                // close dropdown
+    (document.activeElement as HTMLElement)?.blur(); // drop focus so it won't reopen
+  };
 
   return (
-    <div className="dropdown dropdown-end">
-      <label tabIndex={0} className="btn btn-sm">
-        {current === "ar" ? "العربية" : "English"}
-      </label>
-      <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
-        <li><a onClick={() => i18n.changeLanguage("en")}>English</a></li>
-        <li><a onClick={() => i18n.changeLanguage("ar")}>العربية</a></li>
+    <div className={`dropdown dropdown-end ${open ? "dropdown-open" : ""}`}>
+      <button
+        type="button"
+        className="btn btn-ghost"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        {i18n.language.startsWith("ar") ? "العربية" : "English"}
+      </button>
+
+      <ul
+        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-44 z-50"
+        role="listbox"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
+      >
+        <li>
+          <button type="button" onClick={() => pick("ar")}>العربية</button>
+        </li>
+        <li>
+          <button type="button" onClick={() => pick("en")}>English</button>
+        </li>
       </ul>
     </div>
   );

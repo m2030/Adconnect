@@ -1,4 +1,8 @@
 ﻿{
+  "start_title": "Create a new account",
+  "start_option_provider": "Service Provider",
+  "start_option_seeker": "Service Seeker",
+
   "register": {
     "start": {
       "title": "Create a new account",
@@ -12,19 +16,15 @@
       "agency": "Agency",
       "sponsorshipEntity": "Sponsorship entity",
       "influencer": "Influencer"
-    }
+    },
+     "seeker": {
+    "title": "Service Seeker"
   },
-  "seeker": {
-    "title": "Service Seeker",
-    "subtitle": "Fill in the following details to continue"
+  "company": {
+    "name": "Company name"
   },
-  "influencer": {
-    "title": "Influencers",
-    "subtitle": "Complete your professional profile"
-  },
-  "common": {
-    "continue": "Continue",
-    "back": "Back",
-    "logout": "Log out"
+  "activity": "Activity",
+  "permits": "Permits",
+  "submit": "Submit"
   }
 }

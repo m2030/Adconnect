@@ -1,4 +1,8 @@
 {
+  "start_title": "فتح حساب جديد",
+  "start_option_provider": "مقدم خدمة",
+  "start_option_seeker": "طالب خدمة",
+
   "register": {
     "start": {
       "title": "فتح حساب جديد",
@@ -12,19 +16,16 @@
       "agency": "وكالة",
       "sponsorshipEntity": "جهة راعية",
       "influencer": "مؤثّر"
-    }
+    }, 
+     "seeker": {
+    "title": "طالب خدمة"
   },
-  "seeker": {
-    "title": "طالب خدمة",
-    "subtitle": "املأ البيانات التالية للمتابعة"
+  "company": {
+    "name": "اسم الشركة"
   },
-  "influencer": {
-    "title": "مشاهير ومؤثرون",
-    "subtitle": "أكمل ملفك المهني"
-  },
-  "common": {
-    "continue": "متابعة",
-    "back": "رجوع",
-    "logout": "تسجيل الخروج"
+  "activity": "النشاط",
+  "permits": "التراخيص",
+  "submit": "إرسال"
+    
   }
 }

@@ -1,26 +1,20 @@
 {
   "register": {
-    "start": {
-      "title": "فتح حساب جديد",
-      "subtitle": "اختر نوع الحساب",
-      "provider": "مقدم خدمة",
-      "seeker": "طالب خدمة"
-    },
     "provider": {
       "title": "تسجيل مزوّد الخدمة",
       "subtitle": "اختر نوع حساب المزوّد",
       "agency": "وكالة",
       "sponsorshipEntity": "جهة راعية",
       "influencer": "مؤثّر"
+    },
+    "start": {
+      "title": "فتح حساب جديد",
+      "subtitle": "اختر نوع الحساب",
+      "provider": "مقدم خدمة",
+      "seeker": "طالب خدمة"
     }
   },
-  "seeker": {
-    "title": "طالب خدمة",
-    "subtitle": "املأ البيانات التالية للمتابعة"
-  },
-  "influencer": {
-    "title": "مشاهير ومؤثرون",
-    "subtitle": "أكمل ملفك المهني"
-  }
+  "start_title": "فتح حساب جديد",
+  "start_option_provider": "مقدم خدمة",
+  "start_option_seeker": "طالب خدمة"
 }
-

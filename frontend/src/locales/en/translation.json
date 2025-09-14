@@ -1,25 +1,23 @@
 {
-  "register": {
-    "start": {
-      "title": "Create a new account",
-      "subtitle": "Choose account type",
-      "provider": "Service Provider",
-      "seeker": "Service Seeker"
-    },
+
+ "register": {
     "provider": {
       "title": "Provider registration",
       "subtitle": "Choose the provider account type",
       "agency": "Agency",
       "sponsorshipEntity": "Sponsorship entity",
       "influencer": "Influencer"
+    },
+    "start": {
+      "title": "Create a new account",
+      "subtitle": "Choose account type",
+      "provider": "Service Provider",
+      "seeker": "Service Seeker"
     }
   },
-  "seeker": {
-    "title": "Service Seeker",
-    "subtitle": "Fill in the following details to continue"
-  },
-  "influencer": {
-    "title": "Influencers",
-    "subtitle": "Complete your professional profile"
-  }
+  "start_title": "Create a new account",
+  "start_option_provider": "Service Provider",
+  "start_option_seeker": "Service Seeker"
 }
+  
+
