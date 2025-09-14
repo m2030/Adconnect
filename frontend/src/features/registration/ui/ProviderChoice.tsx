@@ -5,30 +5,31 @@ import { useTranslation } from "react-i18next";
 
 export default function ProviderChoice() {
   const nav = useNavigate();
-  const { t, i18n } = useTranslation(); // <- define t here first
+  // Load both namespaces: "translation" (default app strings) and "common"
+  const { t, i18n } = useTranslation(["translation", "common"]);
 
   useEffect(() => {
-    // Dev-only: surface missing i18n keys in console
+    // Dev-only: surface missing i18n keys in console with correct namespaces
     if (import.meta.env.DEV) {
-      const keys = [
-        "register.provider.title",
-        "register.provider.subtitle",
-        "register.provider.agency",
-        "register.provider.sponsorshipEntity",
-        "register.provider.influencer",
-        "common.back"
+      const toCheck: Array<{ k: string; ns: "translation" | "common" }> = [
+        { k: "register.provider.title", ns: "translation" },
+        { k: "register.provider.subtitle", ns: "translation" },
+        { k: "register.provider.agency", ns: "translation" },
+        { k: "register.provider.sponsorshipEntity", ns: "translation" },
+        { k: "register.provider.influencer", ns: "translation" },
+        { k: "back", ns: "common" }
       ];
-      keys.forEach((k) => {
-        // prefer exists() so it doesn't change output
-        if (!i18n.exists(k)) {
-          console.warn("[i18n] missing key:", k, "lang=", i18n.language);
+      toCheck.forEach(({ k, ns }) => {
+        if (!i18n.exists(k, { ns })) {
+          console.warn("[i18n] missing key:", `${ns}:${k}`, "lang=", i18n.resolvedLanguage ?? i18n.language);
         }
       });
     }
 
-    // Optional: enforce lang/dir (if you don't already do this globally)
-    document.documentElement.lang = i18n.language;
-    document.documentElement.dir = i18n.language.startsWith("ar") ? "rtl" : "ltr";
+    // Optional: enforce lang/dir (if not already handled globally)
+    const lng = i18n.resolvedLanguage || i18n.language;
+    document.documentElement.lang = lng;
+    document.documentElement.dir = lng?.startsWith("ar") ? "rtl" : "ltr";
   }, [i18n]);
 
   return (
@@ -80,7 +81,7 @@ export default function ProviderChoice() {
 
             <div className="mt-6 flex justify-center">
               <button className="btn btn-ghost" onClick={() => nav(-1)}>
-                {t("common.back")}
+                {t("common:back")}
               </button>
             </div>
           </div>

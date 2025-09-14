@@ -1,4 +1,6 @@
 // frontend/src/i18n.ts
+
+/*
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
@@ -100,6 +102,8 @@ i18n
     ns: ["common", "registration"],
     defaultNS: "common",
     returnNull: false,
+    debug: true // temporarily: see what files load / missing keys
+
   })
   .then(() => {
     applyLangDir(i18n.language);
@@ -111,3 +115,61 @@ i18n.on("languageChanged", (lng) => {
 });
 
 export default i18n;
+*//*
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import Backend from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+
+i18n
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    fallbackLng: "en",
+    supportedLngs: ["en", "ar"],
+    nonExplicitSupportedLngs: true, // en-US -> en, ar-SA -> ar
+    load: "languageOnly",
+    ns: ["translation"],
+    defaultNS: "translation",
+    backend: {
+      // if your app is served under a sub-path, swap to:
+      // loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/{{ns}}.json`
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
+    },
+    interpolation: { escapeValue: false },
+    debug: true, // temporary
+  });
+
+// expose for DevTools
+if (typeof window !== "undefined") {
+  // @ts-expect-error debug-only
+  window.__i18n = i18n;
+  console.log("[i18n] exposed on window.__i18n");
+}
+
+export default i18n;*/
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import Backend from "i18next-http-backend";                 // or remove if using inline resources
+import LanguageDetector from "i18next-browser-languagedetector";
+
+i18n
+  .use(Backend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    fallbackLng: "en",
+    supportedLngs: ["en", "ar"],
+    nonExplicitSupportedLngs: true,         // en-US -> en
+    load: "languageOnly",                    // only 'en' or 'ar'
+    ns: ["common", "translation"],           // <-- load both
+    defaultNS: "translation",                // use 'translation' by default
+    fallbackNS: "common",                    // if key missing in 'translation'
+    backend: { loadPath: "/locales/{{lng}}/{{ns}}.json" },
+    interpolation: { escapeValue: false },
+    debug: true
+  });
+
+// and ensure your entry imports it first:
+import "./i18n";
