@@ -1,0 +1,98 @@
+{
+  "seeker": {
+    "title": "طالب خدمة",
+    "subtitle": "املأ البيانات التالية للمتابعة",
+    "fields": {
+      "companyName": "اسم الشركة",
+      "activity": "النشاط",
+      "permits": "التراخيص والوثائق الحكومية",
+      "hasInternalMarketing": "هل لديكم فريق تسويق داخلي؟",
+      "field": "مجال الشركة",
+      "wantSponsorship": "مهتمون بخدمات الرعاية؟",
+      "wantMarketing": "مهتمون بخدمات التسويق؟",
+      "annualBudgetSponsorship": "الميزانية السنوية للرعايات",
+      "annualBudgetMarketing": "الميزانية السنوية للتسويق"
+    }
+  },
+
+  "company": { "name": "اسم الشركة" },
+  "activity": "النشاط",
+  "permits": "التراخيص",
+  "submit": "إرسال",
+
+  "provider": {
+    "sponsorshipEntity": {
+      "title": "جهات الرعاية (فعاليات، مشاريع، مؤتمرات، أندية...)",
+      "subtitle": "عرّف بجهتك لجذب الرعاة",
+      "fields": {
+        "companyName": "اسم الجهة/الشركة",
+        "activity": "النشاط",
+        "permits": "التراخيص والوثائق الحكومية",
+        "hasPreviousSponsorships": "هل حصلتم على رعايات من قبل؟",
+        "previousExamples": "أمثلة لرعايات سابقة (اختياري)"
+      }
+    },
+    "marketingCompany": {
+      "title": "شركات التسويق",
+      "subtitle": "عرّف بخدماتك وقدراتك",
+      "fields": {
+        "companyName": "اسم الشركة",
+        "activity": "النشاط",
+        "permits": "التراخيص والوثائق الحكومية",
+        "servicesOffered": "نوع الخدمات (اختر أكثر من خيار)",
+        "exampleWork": "أمثلة / معرض الأعمال (رفع ملفات PDF)",
+        "audienceExperience": "خبرة لفئة مستهدفة محددة (اختياري)",
+        "companySize": "حجم الشركة",
+        "teamMembers": "عدد أعضاء الفريق",
+        "hasAffiliatedInfluencers": "هل لديكم مؤثرون تابعون؟"
+      },
+      "serviceTypes": {
+        "content": "المحتوى",
+        "ads": "الإعلانات",
+        "influencerMgmt": "إدارة المؤثرين",
+        "social": "إدارة شبكات التواصل",
+        "seo": "تحسين محركات البحث",
+        "events": "الفعاليات",
+        "branding": "الهوية والعلامة",
+        "analytics": "التحليلات/التقارير"
+      },
+      "companySizeOptions": {
+        "solo": "فرد",
+        "small": "1–10",
+        "medium": "11–50",
+        "large": "51–200",
+        "enterprise": "200+"
+      }
+    },
+    "influencer": {
+      "title": "المشاهير والمؤثرون",
+      "subtitle": "أكمل ملفك المهني",
+      "fields": {
+        "fullName": "الاسم الكامل",
+        "permits": "التراخيص والوثائق الحكومية",
+        "platforms": "المنصات + عدد المتابعين",
+        "followers": "عدد المتابعين",
+        "audience": "الجمهور المستهدف",
+        "previousAds": "أمثلة لإعلانات سابقة (رفع ملفات PDF)",
+        "hasManager": "هل لديك مدير أعمال؟",
+        "managerName": "اسم مدير الأعمال",
+        "managerPhone": "رقم مدير الأعمال"
+      },
+      "platformOptions": {
+        "instagram": "إنستغرام",
+        "tiktok": "تيك توك",
+        "x": "إكس (تويتر)",
+        "youtube": "يوتيوب",
+        "snapchat": "سناب شات"
+      }
+    }
+  },
+
+  "actions": {
+    "back": "رجوع",
+    "continue": "متابعة",
+    "submit": "إرسال",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  }
+}

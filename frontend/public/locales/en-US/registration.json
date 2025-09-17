@@ -1,0 +1,98 @@
+{
+  "seeker": {
+    "title": "Service Seeker",
+    "subtitle": "Fill in the following details to continue",
+    "fields": {
+      "companyName": "Company name",
+      "activity": "Activity",
+      "permits": "Government permits and documents",
+      "hasInternalMarketing": "Do you have an internal marketing team?",
+      "field": "Company field",
+      "wantSponsorship": "Interested in sponsorship services?",
+      "wantMarketing": "Interested in marketing services?",
+      "annualBudgetSponsorship": "Annual budget for sponsorships",
+      "annualBudgetMarketing": "Annual budget for marketing"
+    }
+  },
+
+  "company": { "name": "Company name" },
+  "activity": "Activity",
+  "permits": "Permits",
+  "submit": "Submit",
+
+  "provider": {
+    "sponsorshipEntity": {
+      "title": "Sponsorship Entities (events, projects, conferences, clubs...)",
+      "subtitle": "Tell us about your entity to attract sponsors",
+      "fields": {
+        "companyName": "Company/Entity name",
+        "activity": "Activity",
+        "permits": "Government permits and documents",
+        "hasPreviousSponsorships": "Have you previously obtained sponsorships?",
+        "previousExamples": "Examples of previous sponsorships (optional)"
+      }
+    },
+    "marketingCompany": {
+      "title": "Marketing Companies",
+      "subtitle": "Describe your services and capabilities",
+      "fields": {
+        "companyName": "Company name",
+        "activity": "Activity",
+        "permits": "Government permits and documents",
+        "servicesOffered": "Type of services (select one or more)",
+        "exampleWork": "Examples / Portfolio (upload PDF files)",
+        "audienceExperience": "Experience with a specific audience (optional)",
+        "companySize": "Company size",
+        "teamMembers": "Number of team members",
+        "hasAffiliatedInfluencers": "Do you have affiliated influencers?"
+      },
+      "serviceTypes": {
+        "content": "Content",
+        "ads": "Ads",
+        "influencerMgmt": "Influencer management",
+        "social": "Social media management",
+        "seo": "SEO",
+        "events": "Events",
+        "branding": "Branding",
+        "analytics": "Analytics/Reporting"
+      },
+      "companySizeOptions": {
+        "solo": "Solo",
+        "small": "1–10",
+        "medium": "11–50",
+        "large": "51–200",
+        "enterprise": "200+"
+      }
+    },
+    "influencer": {
+      "title": "Celebrities & Influencers",
+      "subtitle": "Complete your professional profile",
+      "fields": {
+        "fullName": "Full name",
+        "permits": "Government permits and documents",
+        "platforms": "Platforms + followers",
+        "followers": "Followers",
+        "audience": "Target audience",
+        "previousAds": "Examples of previous ads (upload PDF files)",
+        "hasManager": "Do you have a business manager?",
+        "managerName": "Manager name",
+        "managerPhone": "Manager phone"
+      },
+      "platformOptions": {
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "x": "X (Twitter)",
+        "youtube": "YouTube",
+        "snapchat": "Snapchat"
+      }
+    }
+  },
+
+  "actions": {
+    "back": "Back",
+    "continue": "Continue",
+    "submit": "Submit",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

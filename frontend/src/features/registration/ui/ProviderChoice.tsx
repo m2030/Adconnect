@@ -47,7 +47,7 @@ export default function ProviderChoice() {
             <div className="grid gap-3 md:grid-cols-3">
               <button
                 className="card bg-base-100 border border-base-300 hover:shadow-md transition"
-                onClick={() => nav("/register/provider/agency")}
+                onClick={() =>  nav("/register/provider/marketing")}
               >
                 <div className="card-body items-center text-center">
                   <span className="text-lg font-semibold">
