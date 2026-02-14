@@ -26,7 +26,7 @@
       }
     }
   ],
-  "roles": { "realm": [ { "name": "sponsor" }, { "name": "advertiser" } ] },
+  "roles": { "realm": [ { "name": "sponsor" }, { "name": "advertiser" } ,    { "name": "verified_user" }] },
   "users": [
 {
   "username": "alice",
