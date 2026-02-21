@@ -10,11 +10,11 @@ export default function RegistrationStart() {
       <h1>{t("register.start.title")}</h1>
 
       <div style={{ display: "flex", gap: 12, marginTop: 16 }}>
-        <button onClick={() => nav("/register/provider")}>
+        <button type="button" onClick={() => nav("/register/provider")}>
           {t("register.start.provider")}
         </button>
 
-        <button onClick={() => nav("/register/seeker")}>
+        <button type="button" onClick={() => nav("/register/seeker")}>
           {t("register.start.seeker")}
         </button>
       </div>

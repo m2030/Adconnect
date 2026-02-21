@@ -1,103 +1,96 @@
+// frontend/src/pages/RegisterSponsor.tsx
 import { useState } from "react";
-import { validateCompanyEmail } from "../utils/companyEmail";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function RegisterSponsor() {
-  const [email, setEmail] = useState("");
-  const [emailErr, setEmailErr] = useState<string | null>(null);
-  const [name, setName] = useState("");
-  const [company, setCompany] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [serverErr, setServerErr] = useState<string | null>(null);
-  const [okMsg, setOkMsg] = useState<string | null>(null);
+  const nav = useNavigate();
 
-  const validateNow = () => {
-    const err = validateCompanyEmail(email);
-    setEmailErr(err);
-    return !err;
-  };
+  const [firstName, setFirstName] = useState("Test");
+  const [lastName, setLastName] = useState("User");
+  const [email, setEmail] = useState("test@acme.com");
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [ok, setOk] = useState(false);
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setServerErr(null);
-    setOkMsg(null);
-    if (!validateNow()) return;
+    setError(null);
+    setOk(false);
+    setLoading(true);
 
     try {
-      setSubmitting(true);
-      // call your backend endpoint for sponsor registration
-      const resp = await fetch("/api/register/sponsor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email }),
-      });
-      if (!resp.ok) throw new Error((await resp.text()) || "Failed");
-      setOkMsg("Registration received! Check your email for next steps.");
-      setName(""); setCompany(""); setEmail("");
-    } catch (err: any) {
-      setServerErr(err.message || "Something went wrong");
+      const payload = {
+        email: email.trim(),
+        first_name: firstName.trim(),
+        last_name: lastName.trim(),
+        redirect_uri: `${window.location.origin}/`,
+      };
+
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE}/api/register/sponsor`,
+        payload,
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      if (res.status === 200 || res.status === 201 || res.data?.ok) {
+        setOk(true);
+        nav("/", { replace: true }); // ✅ Step 3: go Home after successful registration
+      }
+    } catch (e: any) {
+      const msg =
+        e?.response?.data?.detail ||
+        e?.response?.data?.error ||
+        "Registration failed";
+      setError(msg);
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
-  };
+  }
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-6">
-      <div className="card w-full max-w-xl bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Sponsor Registration</h2>
+    <div style={{ maxWidth: 720, margin: "60px auto", padding: 20 }}>
+      <h1>Sponsor Registration</h1>
+      <p style={{ opacity: 0.8 }}>
+        Allowed domains (dev): <code>acme.com</code>, <code>corp.acme.com</code>
+      </p>
 
-          {serverErr && <div className="alert alert-error">{serverErr}</div>}
-          {okMsg && <div className="alert alert-success">{okMsg}</div>}
-
-          <form onSubmit={onSubmit} noValidate>
-            <div className="form-control">
-              <label className="label"><span className="label-text">Full name</span></label>
-              <input
-                className="input input-bordered"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-control mt-3">
-              <label className="label"><span className="label-text">Company</span></label>
-              <input
-                className="input input-bordered"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                required
-              />
-            </div>
-
-            {/* EMAIL with company-only validation */}
-            <div className="form-control mt-3">
-              <label className="label"><span className="label-text">Work email</span></label>
-              <input
-                type="email"
-                className={`input input-bordered ${emailErr ? "input-error" : ""}`}
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); if (emailErr) setEmailErr(null); }}
-                onBlur={validateNow}  // <-- run validator on blur
-                required
-              />
-              {emailErr && <span className="text-error text-sm mt-1">{emailErr}</span>}
-              <label className="label">
-                <span className="label-text-alt">Personal domains (Gmail/Hotmail/etc.) are not accepted.</span>
-              </label>
-            </div>
-
-            <div className="form-control mt-6">
-              <button
-                className="btn btn-primary"
-                type="submit"
-                disabled={submitting || !!emailErr}
-              >
-                {submitting ? "Submitting..." : "Register"}
-              </button>
-            </div>
-          </form>
+      {error && (
+        <div style={{ padding: 12, border: "1px solid #f3c", borderRadius: 10, marginTop: 12 }}>
+          <b>Error:</b> {error}
         </div>
+      )}
+
+      {ok && (
+        <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10, marginTop: 12 }}>
+          Registered successfully. Redirecting…
+        </div>
+      )}
+
+      <form onSubmit={onSubmit} style={{ marginTop: 16, display: "grid", gap: 12 }}>
+        <label style={{ display: "grid", gap: 6 }}>
+          <span>First name</span>
+          <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        </label>
+
+        <label style={{ display: "grid", gap: 6 }}>
+          <span>Last name</span>
+          <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        </label>
+
+        <label style={{ display: "grid", gap: 6 }}>
+          <span>Email</span>
+          <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        </label>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+      </form>
+
+      <div style={{ marginTop: 18 }}>
+        <Link to="/">Back to Home</Link>
       </div>
     </div>
   );
