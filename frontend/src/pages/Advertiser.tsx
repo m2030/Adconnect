@@ -1,39 +1,36 @@
-import { hasRole } from "../keycloak";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import RequireVerified from "../components/RequireVerified";
 
-export default function Advertiser() {
-  // ✅ verification computed at the top of the dashboard page
-  const verified = hasRole("verified_user");
+type Me = { verified: boolean; roles: string[] };
 
-  function createCampaign() {
-    // your action
+export default function Advertiser() {
+  const [me, setMe] = useState<Me | null>(null);
+
+  useEffect(() => {
+    axios.get("/api/me").then(r => setMe(r.data)).catch(() => setMe({ verified: false, roles: [] }));
+  }, []);
+
+  const verified = me?.verified ?? false;
+
+  function submitAction() {
+    // your submit action (POST)
   }
 
   return (
     <div>
-      <h1>Advertiser Dashboard</h1>
-
-      {/* ✅ pending banner */}
       {!verified && (
-        <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10, marginTop: 12 }}>
+        <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 10, marginBottom: 16 }}>
           <b>Pending verification</b>
           <div style={{ marginTop: 6 }}>
-            You can browse projects, but actions are disabled until admin approves you.
+            Your account is waiting for admin approval. You can browse, but actions are disabled.
           </div>
         </div>
       )}
 
-      {/* ✅ wrap the action button (Create Campaign) */}
-      <div style={{ marginTop: 16 }}>
-        <RequireVerified verified={verified}>
-          <button onClick={createCampaign}>Create Campaign</button>
-        </RequireVerified>
-      </div>
-
-      {/* Browsing content stays available */}
-      <div style={{ marginTop: 16 }}>
-        {/* ProjectList / ProjectDetails links / etc */}
-      </div>
+      <RequireVerified verified={verified}>
+        <button onClick={submitAction}>Submit</button>
+      </RequireVerified>
     </div>
   );
 }

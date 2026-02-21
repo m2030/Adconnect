@@ -11,9 +11,7 @@ export default function RequireVerified({
 
   return (
     <span title="Pending verification: actions are disabled until admin approves your account.">
-      <span style={{ pointerEvents: "none", opacity: 0.5 }}>
-        {children}
-      </span>
+      <span style={{ pointerEvents: "none", opacity: 0.5 }}>{children}</span>
     </span>
   );
 }

@@ -25,7 +25,7 @@ import ProviderMarketingCompanyFormPage from "./features/registration/ui/Provide
 import ProviderInfluencerFormPage from "./features/registration/ui/ProviderInfluencerFormPage";
 
 import LanguageSwitcher from "./components/LanguageSwitcher";
-
+import Pending from "./pages/Pending";
 export default function App() {
   const [ready, setReady] = useState(false);
 
@@ -83,7 +83,7 @@ export default function App() {
               </Guard>
             }
           />
-
+<Route path="/pending" element={<Pending />} />
           {/* 404 -> home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
