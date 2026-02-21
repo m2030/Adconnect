@@ -23,7 +23,7 @@ import SeekerFormPage from "./features/registration/ui/SeekerFormPage";
 import ProviderSponsorshipEntityFormPage from "./features/registration/ui/ProviderSponsorshipEntityFormPage";
 import ProviderMarketingCompanyFormPage from "./features/registration/ui/ProviderMarketingCompanyFormPage";
 import ProviderInfluencerFormPage from "./features/registration/ui/ProviderInfluencerFormPage";
-
+import Home from "./pages/Home";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import Pending from "./pages/Pending";
 export default function App() {
@@ -49,8 +49,7 @@ export default function App() {
       <div className="container mx-auto p-4">
         <Routes>
           {/* Landing: guests -> registration; authed -> dashboards */}
-          <Route path="/" element={<LandingRouter />} />
-
+           <Route path="/" element={<Home />} />
           {/* Public auth */}
           <Route path="/login" element={<Login />} />
 

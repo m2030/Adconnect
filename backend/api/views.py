@@ -29,3 +29,11 @@ def sponsor_home(request):
 
     # POST = action (blocked unless verified_user)
     return Response({"ok": True, "message": "Action executed"})
+@api_view(["GET", "POST"])
+@permission_classes([IsAuthenticated, IsAdvertiser, ReadOnlyUnlessVerified])
+def advertiser_home(request):
+    if request.method == "GET":
+        return Response({"ok": True, "role": "advertiser", "mode": "browse"})
+
+    # POST = action (blocked unless verified_user)
+    return Response({"ok": True, "message": "Action executed"})
